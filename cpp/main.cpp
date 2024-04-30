@@ -1,12 +1,22 @@
 #include <iostream>
 #include <vector>
 
-int main(int argc, char* argv[]) {
-	std::cout << argc << "\n";
-	std::cout << argv << "\n";
-	std::vector<int> test = {10, 20, 30, 40};
+using std::string, std::cout;
 
-	for (int i: test) {
-		std::cout << i << "\n";
+struct myStruct {
+	string data;
+	private: myStruct* next;
+
+	public: myStruct(string data, myStruct* next, const bool isFirst, const bool isLast): 
+		data(data), next(next)
+	{};
+
+	public: myStruct* next_elem() {
+		return next;
 	}
+};
+
+int main() {
+	myStruct test = myStruct("testing, lol", NULL, true, false);
+	cout << test.data << "\n";
 }

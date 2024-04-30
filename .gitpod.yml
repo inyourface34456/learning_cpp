@@ -4,8 +4,9 @@ image: gitpod/workspace-full:latest
 # List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
   - name: Script Task
-    init: mkdir -p ~/.vim && git clone https://github.com/xavierd/clang_complete.git /tmp/clang_complete && cp -r /tmp/clang_complete/* ~/.vim && echo "let g:clang_library_path='/usr/lib/llvm-17/lib/libclang-17.so.1'" > ~/.vimrc 
-    command: echo 'start script'
+    init: echo "init"
+    command: mkdir -p ~/.vim && git clone https://github.com/xavierd/clang_complete.git /tmp/clang_complete && cp -r /tmp/clang_complete/* ~/.vim && echo "let g:clang_library_path='/usr/lib/llvm-17/lib/libclang-17.so.1'" > ~/.vimrc 
+
 
 # List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
 ports:

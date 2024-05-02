@@ -4,15 +4,17 @@ using std::string;
 
 class Account {
 	private: 
-		string ID;
+		string ID, password;
 		float balence;
 
 	public: 
-		Account(string ID): ID(ID) {}
+		Account(string ID, string password): ID(ID), password(password), balence(0.0) {}
 		float get_bal() { return balence; }
-		bool is_overdrawn() { return balence<=0; }
 		bool matches(string id);
 		void deposit(float amount) { balence += amount; }
 		void withdraw(float amount) { balence -= amount; }
 		void close();
+		void set_id(string new_id) { ID = new_id; };
+		bool confirm_password(string diff_password) { return password==diff_password; }
+		void set_password(string new_pwd) { password = new_pwd; }
 };

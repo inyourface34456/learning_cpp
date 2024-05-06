@@ -14,3 +14,8 @@ cp .vimrc ~/.vimrc
 NE -c "helptags fugitive/doc" -c q
 vim -u none -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
 
+#misc
+sudo apt install tmux -y
+sudo add-apt-repository ppa:jonathonf/vim -y
+sudo apt update -y
+sudo apt install vim -y

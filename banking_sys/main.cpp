@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unistd.h>
 
 using std::cout, std::string, std::cin, std::vector;
 
@@ -16,22 +17,18 @@ start:
 
   if (choice == "N") {
     string ID;
-    string password;
     cout << "What is the accout ID? ";
     cin >> ID;
-    cout << "What is that password? ";
-    cin >> password;
+    string password = getpass("What is the password for the account?");
     active.set_id(ID);
     active.set_password(password);
     accounts.push_back(&active);
   } else if (choice == "L") {
 		string ID;
-    string password;
 
 		cout << "What is the ID of the account? ";  
 		cin >> ID;
-    cout << "What is the password of the account? ";
-    cin >> password;
+    string password =  getpass("What is the password of the account? ");
 
 		for (Account* account: accounts) {
       if (account->matches(ID) && account->confirm_password(password)) {
@@ -84,11 +81,12 @@ void account_loop(Account* active, vector<Account*> accounts) {
     } else if (choice == "L") {
       cout << "See you!\n";
       start(accounts);
-    } else if (choice == "C") {
-      string new_password;
-      cout << "What is the new password? ";
-      cin >> new_password;
-      
+    } else if (choice == "P") {
+      string old_psd = getpass("What is the old password?");
+      if (active->confirm_password(old_psd)) { 
+        string new_password = getpass("what is the new password for the account? ");
+        active->set_password(new_password);
+      }
     }
   }
 }
